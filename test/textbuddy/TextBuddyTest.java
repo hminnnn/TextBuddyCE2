@@ -150,5 +150,56 @@ public class TextBuddyTest {
 		assertEquals("[]", tb.searched().toString());
 		
 	}
+	
+	// Search2. Word present in every line
+	@Test
+	public void testSearch3() {
+		
+		String[] arg = {"test.txt"};
+		TextBuddy tb = new TextBuddy(arg);
+		
+		ArrayList<String> expectedArray = new ArrayList<String>();
+		ArrayList<String> actualOutput = tb.searched();
+		
+		tb.executeCommand("add hello there");
+		tb.executeCommand("add HELLO here");
+		tb.executeCommand("add hello everywhere");
+		tb.executeCommand("add hello again");
+		tb.executeCommand("search hello");
+		
+		expectedArray.add("hello there");
+		expectedArray.add("HELLO here");
+		expectedArray.add("hello everywhere");
+		expectedArray.add("hello again");
+		
+		for(int i = 0; i < expectedArray.size(); i++) {
+			assertEquals(expectedArray.get(i), actualOutput.get(i));
+		}
+	}
+
+	// Search3. Search for the word with punctuation.
+	@Test
+	public void testSearch4() {
+		
+		String[] arg = {"test.txt"};
+		TextBuddy tb = new TextBuddy(arg);
+		
+		ArrayList<String> expectedArray = new ArrayList<String>();
+		ArrayList<String> actualOutput = tb.searched();
+
+		tb.executeCommand("add this is a girl.");
+		tb.executeCommand("add this is a girl and that");
+		tb.executeCommand("add hello there.");
+		tb.executeCommand("add hello again there");
+		tb.executeCommand("add hello again");
+		tb.executeCommand("search girl");
+		
+		expectedArray.add("this is a girl.");
+		expectedArray.add("this is a girl and that");
+		
+		for(int i = 0; i < expectedArray.size(); i++) {
+			assertEquals(expectedArray.get(i), actualOutput.get(i));
+		}
+	}
 
 }
