@@ -107,7 +107,6 @@ public class TextBuddy {
 			default :
 				throw new Error(MESSAGE_INVALID_COMMAND);
 		}
-		
 		return MESSAGE_INVALID_COMMAND;
 
 	}
@@ -156,6 +155,10 @@ public class TextBuddy {
 		}
 	}
 
+	/**
+	 * This operation displays all the text in the textFile
+	 * @return all the text in the textFile array
+	 */
 	public String display() {
 		if (!textFile.isEmpty()) {
 			int size = 1;
@@ -170,6 +173,10 @@ public class TextBuddy {
 		}
 	}
 
+	/**
+	 * This operation clears the textFile
+	 * @return status of operation
+	 */
 	public String clear() {
 		if (!restOfText.isEmpty()) {
 			return String.format(MESSAGE_INVALID_COMMAND);
@@ -178,6 +185,10 @@ public class TextBuddy {
 		return String.format(MESSAGE_FILE_CLEARED, fileName);
 	}
 
+	/**
+	 * This operation deletes the specific line
+	 * @return status of operation
+	 */
 	public String delete() {
 		if (restOfText.isEmpty()) {
 			 return MESSAGE_INVALID_COMMAND;
@@ -195,6 +206,10 @@ public class TextBuddy {
 		}
 	}
 
+	/**
+	 * This operation adds the input line to the textFile
+	 * @return status of operation
+	 */
 	public String add() {
 		if (restOfText.isEmpty()) {
 			return String.format(MESSAGE_INVALID_COMMAND);
@@ -206,8 +221,6 @@ public class TextBuddy {
 	
 	/**
 	 * This operation is for TextBuddyTest to test if the text is added.
-	 * @param text
-	 * @return boolean
 	 */
 	public boolean isAdded(String text) {
 		if (textFile.get(textFile.size()-1).equals(text)) {
@@ -216,6 +229,10 @@ public class TextBuddy {
 		return false;
 	}
 	
+	/**
+	 * This operation sorts the lines of text in textFile
+	 * @return status of operation
+	 */
 	public String sort() {
 		Collections.sort(textFile);
 		return String.format(MESSAGE_FILE_SORTED, fileName);
@@ -223,12 +240,17 @@ public class TextBuddy {
 	
 	/**
 	 * This operation is for TextBuddyTest to test if the textFile arraylist is sorted.
-	 * @return
 	 */
 	public ArrayList<String> isSorted() {
 		return textFile;
 	}
 
+	/**
+	 * This operation searches the textFile for the word to see if it is present.
+	 * Ignores case and punctuation. 
+	 * Only one word - the first word is searched. Rest of the words are ignored.
+	 * @return lines that contain the word searched by the user
+	 */
 	public String search() {
 		searchedText.clear();
 		if (textFile.isEmpty() ) {
@@ -264,7 +286,6 @@ public class TextBuddy {
 
 	/**
 	 * This operation is for TextBuddyTest to test if the word has been searched.
-	 * @return
 	 */
 	public ArrayList<String> searched() {
 		return searchedText;
