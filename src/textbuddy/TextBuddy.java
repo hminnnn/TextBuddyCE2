@@ -4,8 +4,10 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
+
 
 /**
  * TextBuddy CE2
@@ -26,6 +28,7 @@ public class TextBuddy {
 	private static final String MESSAGE_FILE_ADDED = "added to %1$s: \"%2$s\"";
 	private static final String MESSAGE_FILE_CLEARED = "all content deleted from %1$s";
 	private static final String MESSAGE_FILE_EMPTY_DISPLAY = "%1$s is empty";
+	private static final String MESSAGE_FILE_SORTED = "%1$s is sorted";
 	
 	public TextBuddy(String[] Args) {
 		fileName = Args[0];
@@ -93,6 +96,9 @@ public class TextBuddy {
 
 			case INVALID :
 				return String.format(MESSAGE_INVALID_COMMAND);
+				
+			case SORT :
+				return sort();
 
 			default :
 				throw new Error(MESSAGE_INVALID_COMMAND);
@@ -137,6 +143,8 @@ public class TextBuddy {
 			return COMMAND_TYPE.CLEAR;
 		} else if (userInput.equalsIgnoreCase("exit")) {
 			return COMMAND_TYPE.EXIT;
+		} else if (userInput.equalsIgnoreCase("sort")) {
+			return COMMAND_TYPE.SORT;
 		} else {
 			return COMMAND_TYPE.INVALID;
 		}
@@ -200,6 +208,11 @@ public class TextBuddy {
 			return true;
 		}
 		return false;
+	}
+	
+	public String sort() {
+		return fileName;
+
 	}
 	
 

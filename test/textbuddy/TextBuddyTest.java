@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
 public class TextBuddyTest {
 
 	@Test
@@ -68,6 +69,23 @@ public class TextBuddyTest {
 		assertEquals("Invalid command", tb.executeCommand("clear 2"));
 		
 		assertEquals("all content deleted from test.txt", tb.executeCommand("clear"));
+		
+	}
+	
+	// Sort1. Input not sorted
+	@Test 
+	public void testIsSorted1() {
+		
+		String[] arg = {"test.txt"};
+		TextBuddy tb = new TextBuddy(arg);
+		
+		tb.executeCommand("clear");
+		tb.executeCommand("add zzz");
+		tb.executeCommand("add bbb");
+		tb.executeCommand("add sss");
+		tb.sort();
+		
+		assertEquals("test.txt is sorted", tb.sort());
 		
 	}
 
