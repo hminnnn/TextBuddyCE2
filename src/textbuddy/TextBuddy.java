@@ -211,8 +211,8 @@ public class TextBuddy {
 	}
 	
 	public String sort() {
-		return fileName;
-
+		Collections.sort(textFile);
+		return String.format(MESSAGE_FILE_SORTED, fileName);
 	}
 	
 
