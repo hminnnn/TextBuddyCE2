@@ -151,7 +151,7 @@ public class TextBuddyTest {
 		
 	}
 	
-	// Search2. Word present in every line
+	// Search3. Word present in every line
 	@Test
 	public void testSearch3() {
 		
@@ -177,7 +177,7 @@ public class TextBuddyTest {
 		}
 	}
 
-	// Search3. Search for the word with punctuation.
+	// Search4. Search for the word with punctuation.
 	@Test
 	public void testSearch4() {
 		

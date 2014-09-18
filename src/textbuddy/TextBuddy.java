@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
 
-
 /**
  * TextBuddy CE2
  * File is saved after every command. 
