@@ -134,5 +134,21 @@ public class TextBuddyTest {
 			assertEquals(expectedArray.get(i), actualOutput.get(i));
 		}
 	}
+	
+	// Search2. Word not present
+	@Test
+	public void testSearch2() {
+		
+		String[] arg = {"test.txt"};
+		TextBuddy tb = new TextBuddy(arg);
+		
+		tb.executeCommand("add hello there");
+		tb.executeCommand("add huimin is here!!!");
+		tb.executeCommand("add abcdefg");
+		tb.executeCommand("add qwerty");
+		tb.executeCommand("search kite");
+		assertEquals("[]", tb.searched().toString());
+		
+	}
 
 }
