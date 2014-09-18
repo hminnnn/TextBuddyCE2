@@ -231,32 +231,34 @@ public class TextBuddy {
 
 	public String search() {
 		searchedText.clear();
-
-		boolean isPresent = false;
-		String[] word;
-		String textToCheck;
-		String wordToSearch = restOfText;
-		String[] searchWord = wordToSearch.split(" ");
-
-		for (int i = 0; i < textFile.size(); i++) {
-			textToCheck = textFile.get(i);
-			word = textToCheck.split(" ");
-			for (int j = 0; j < word.length; j++ ) {
-				if (word[j].equals(searchWord[0])) {
-					isPresent = true;
-					break;
-				} else {
-					isPresent = false;
+		if (textFile.isEmpty() ) {
+			return String.format(MESSAGE_FILE_EMPTY_DISPLAY, fileName);
+		} else {
+			boolean isPresent = false;
+			String[] word;
+			String textToCheck;
+			String wordToSearch = restOfText.replaceAll("[\\W]", " ");
+			String[] searchWord = wordToSearch.split(" ");
+			
+			for (int i = 0; i < textFile.size(); i++) {
+				textToCheck = textFile.get(i).replaceAll("[\\W]",  " ");
+				word = textToCheck.split(" ");
+				for (int j = 0; j < word.length; j++ ) {
+					if (word[j].equalsIgnoreCase(searchWord[0])) {
+						isPresent = true;
+						break;
+					} else {
+						isPresent = false;
+					}
+				}
+				if (isPresent) {
+					searched();
+					int num = i+1;
+					System.out.println(num +". " + textFile.get(i));
+					searchedText.add(textFile.get(i));
 				}
 			}
-			if (isPresent) {
-				searched();
-				int num = i+1;
-				System.out.println(num +". " + textFile.get(i));
-				searchedText.add(textFile.get(i));
-			}
 		}
-
 		return restOfText + " -  is present in the lines above:" ;
 	}
 
