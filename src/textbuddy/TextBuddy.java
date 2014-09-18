@@ -21,6 +21,7 @@ public class TextBuddy {
 	private String restOfText;
 	private String fileName;
 	private static Scanner sc = new Scanner(System.in);
+	private ArrayList<String> searchedText = new ArrayList<String>();
 	
 	private static final String MESSAGE_INVALID_COMMAND = "Invalid command";
 	private static final String MESSAGE_NO_FILE_NAME = "File name not specified.";
@@ -100,6 +101,9 @@ public class TextBuddy {
 			case SORT :
 				return sort();
 
+			case SEARCH :
+				return search();
+
 			default :
 				throw new Error(MESSAGE_INVALID_COMMAND);
 		}
@@ -145,6 +149,8 @@ public class TextBuddy {
 			return COMMAND_TYPE.EXIT;
 		} else if (userInput.equalsIgnoreCase("sort")) {
 			return COMMAND_TYPE.SORT;
+		} else if (userInput.equalsIgnoreCase("search")) {
+			return COMMAND_TYPE.SEARCH;
 		} else {
 			return COMMAND_TYPE.INVALID;
 		}
@@ -223,6 +229,20 @@ public class TextBuddy {
 		return textFile;
 	}
 
+	public String search() {
+		return fileName;
+		
+	}
+	
+	/**
+	 * This operation is for TextBuddyTest to test if the word has been searched.
+	 * @return
+	 */
+	public ArrayList<String> searched() {
+		return searchedText;
+
+	}
+	
 	/**
 	 * This operation saves the file. If file already exists, it will be overwritten. 
 	 */

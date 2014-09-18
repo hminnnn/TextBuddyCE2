@@ -112,5 +112,27 @@ public class TextBuddyTest {
 		
 	} 
 	
+	// Search1. Word present in one line
+	@Test
+	public void testSearch1() {
+		
+		String[] arg = {"test.txt"};
+		TextBuddy tb = new TextBuddy(arg);
+		
+		ArrayList<String> expectedArray = new ArrayList<String>();
+		ArrayList<String> actualOutput = tb.searched();
+
+		tb.executeCommand("add hello there");
+		tb.executeCommand("add huimin is here!");
+		tb.executeCommand("add abcdefg");
+		tb.executeCommand("add qwerty");
+		tb.executeCommand("search huimin");
+		
+		expectedArray.add("huimin is here!");
+		
+		for(int i = 0; i < expectedArray.size(); i++) {
+			assertEquals(expectedArray.get(i), actualOutput.get(i));
+		}
+	}
 
 }
