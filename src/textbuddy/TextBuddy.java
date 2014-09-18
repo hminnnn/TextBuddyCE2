@@ -230,17 +230,43 @@ public class TextBuddy {
 	}
 
 	public String search() {
-		return fileName;
-		
+		searchedText.clear();
+
+		boolean isPresent = false;
+		String[] word;
+		String textToCheck;
+		String wordToSearch = restOfText;
+		String[] searchWord = wordToSearch.split(" ");
+
+		for (int i = 0; i < textFile.size(); i++) {
+			textToCheck = textFile.get(i);
+			word = textToCheck.split(" ");
+			for (int j = 0; j < word.length; j++ ) {
+				if (word[j].equals(searchWord[0])) {
+					isPresent = true;
+					break;
+				} else {
+					isPresent = false;
+				}
+			}
+			if (isPresent) {
+				searched();
+				int num = i+1;
+				System.out.println(num +". " + textFile.get(i));
+				searchedText.add(textFile.get(i));
+			}
+		}
+
+		return restOfText + " -  is present in the lines above:" ;
 	}
-	
+
 	/**
 	 * This operation is for TextBuddyTest to test if the word has been searched.
 	 * @return
 	 */
 	public ArrayList<String> searched() {
 		return searchedText;
-
+		
 	}
 	
 	/**
