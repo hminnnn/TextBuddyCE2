@@ -2,8 +2,9 @@ package textbuddy;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.util.ArrayList;
 
+import org.junit.Test;
 
 public class TextBuddyTest {
 
@@ -88,5 +89,28 @@ public class TextBuddyTest {
 		assertEquals("test.txt is sorted", tb.sort());
 		
 	}
+	
+	// Sort2. Input sorted
+	@Test 
+	public void testIsSorted2() {
+		
+		String[] arg = {"test.txt"};
+		TextBuddy tb = new TextBuddy(arg);
+		ArrayList<String> expectedArray = new ArrayList<String>();
+		ArrayList<String> actualOutput = tb.isSorted();
+		
+		tb.executeCommand("add 123");
+		tb.executeCommand("add apples");
+		tb.executeCommand("add cats");
+		expectedArray.add("123");
+		expectedArray.add("apples");
+		expectedArray.add("cats");
+		
+		for(int i = 0; i < expectedArray.size(); i++) {
+			assertEquals(expectedArray.get(i), actualOutput.get(i));
+		}
+		
+	} 
+	
 
 }

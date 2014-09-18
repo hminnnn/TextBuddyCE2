@@ -215,6 +215,13 @@ public class TextBuddy {
 		return String.format(MESSAGE_FILE_SORTED, fileName);
 	}
 	
+	/**
+	 * This operation is for TextBuddyTest to test if the textFile arraylist is sorted.
+	 * @return
+	 */
+	public ArrayList<String> isSorted() {
+		return textFile;
+	}
 
 	/**
 	 * This operation saves the file. If file already exists, it will be overwritten. 
